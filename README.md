@@ -13,16 +13,36 @@ To build you need NASM compiler installed:
 sudo apt-get install nasm
 ```
 
-Then just:
+Then compile and link:
 
 ```
 nasm -f elf64 quine.asm
 ld quine.o -o quine
 ```
 
-Make executable and run with:
+Make file executable and run with:
 
 ```
 chmod +x quine
 ./quine
 ```
+
+As a result, quine will output its source code.
+
+## Similarity check
+
+To check that the output and the source file really have no differences, you can use the `diff` utility.
+
+Save the output to some file:
+
+```
+./quine > test.txt
+```
+
+And then run:
+
+```
+diff -s test.txt quine.asm
+```
+
+It will report that the content of the files is identical.
